@@ -1,0 +1,5 @@
+.border{
+    z-index: 200;
+    position: fixed;
+    background-color: white;
+}
