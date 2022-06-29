@@ -1,0 +1,17 @@
+.welcome{
+    position: absolute;
+    top: 50%;
+    width: 10em;
+    background-color: red;
+    text-align: center;
+    padding: 2em;
+    left: -5em;
+    transform: translate(0,-50%);
+}
+
+.about{
+    position: absolute;
+    top: 50%;
+    transform: translate(25%,-50%);
+    left: 25%;
+}
