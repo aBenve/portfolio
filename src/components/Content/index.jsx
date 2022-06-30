@@ -7,7 +7,9 @@ export default function Content() {
 
     const [scrolled, setScrolled] = useState(false)
     const [scrollPosition, setScrollPosition] = useState(0)
-    const [fixPage, setFixPage] = useState(true)
+    const [fixPage, setFixPage] = useState(0)
+
+    const animDuration = 1;
 
     function handleScroll(){
         if(scrollPosition === 0){
@@ -18,14 +20,18 @@ export default function Content() {
             setScrolled(false)
             setScrollPosition(0)
         }
-        if(window.scrollY === 130){
-            setFixPage(false);
+        if(window.scrollY > 230){
+            setFixPage(window.scrollY - 230);
         }
+        else 
+            setFixPage(0);
     }
     useEffect(() => {
         window.addEventListener('scroll', handleScroll, false)
         return () => {window.removeEventListener('scroll', handleScroll);}
     },[])  
+
+
 
     const variants = {
         initial: {width: scrolled ? '50%':'50%', opacity: 1},
@@ -33,12 +39,17 @@ export default function Content() {
     }
 
     return <>
-            <main className="w-full flex flex-row h-full">
-                <section className='w-full flex flex-col bg-red-400 flex-1 '>
+            <main className="w-full flex flex-row h-full content p-10" style={
+                {
+                    transform:`matrix(1,0,0,1,0,${(-fixPage) <= -910 ? 0:(-fixPage)})`, 
+                    visibility:`${fixPage >= 910 ? 'hidden' : 'visible'}`
+                }
+            }>
+                <section className='w-full flex flex-col bg-red-400 flex-1'>
                     <motion.div
                         animate={{opacity:scrolled?1:0}}
                         initial={{opacity:0}}
-                        transition={{duration: 1.5, ease:'easeInOut'}}
+                        transition={{duration: animDuration/2, ease:'easeInOut', delay: scrolled? animDuration:0}}
                         className="about"
                     >
                         about
@@ -48,7 +59,7 @@ export default function Content() {
                     animate='done'
                     initial='initial' 
                     variants={variants}
-                    transition={{duration: 1, ease:'easeInOut'}}
+                    transition={{duration: animDuration, ease:'easeInOut'}}
                     >
                     <div className="welcome">
                         FRONT DEV

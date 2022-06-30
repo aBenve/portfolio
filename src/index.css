@@ -7,3 +7,19 @@ body{
     padding: 0;
     box-sizing: border-box;
 }
+.photo{
+    margin-top: 100vh;
+    min-width: 100vw;
+    min-height: 100vh;
+    background-color: blue;
+}
+.projects{
+    min-width: 100vw;
+    min-height: 100vh;
+    background-color: red;
+}
+.contact{
+    min-width: 100vw;
+    min-height: 100vh;
+    background-color: green;
+}

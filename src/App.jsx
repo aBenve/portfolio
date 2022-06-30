@@ -9,10 +9,14 @@ const App = () => {
 	return (
 		<>
 			<Frame/>
-			<div className='z-0 w-screen h-screen p-10'>
+			<div className='z-0 w-screen h-screen'>
 				<Content/>	
-				<div className='bg-blue-400 h-full w-full'></div>
+				
+				<div className='photo'></div>
+				<div className='projects'></div>
+				<div className='contact'></div>
 			</div>
+
 		</>
 	)
 }
