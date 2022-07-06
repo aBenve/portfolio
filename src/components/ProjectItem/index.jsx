@@ -33,15 +33,15 @@ const secondaryTextVariant = {
 
 export default function ProjectItem({ gender, genderColor, title, titleColor, desc, descColor, bgColor, image }){
 
-     const controls = useAnimation();
+    const controls = useAnimation();
 
-     function handleMouseEnterControls() {
+    function handleMouseEnterControls() {
         controls.start("hover");
-      }
-    
-      function handleMouseLeaveControls() {
+    }
+
+    function handleMouseLeaveControls() {
         controls.start("initial");
-      }
+    }
     return <>
             <a className='relative overflow-hidden'
                 onMouseEnter={handleMouseEnterControls}
@@ -49,24 +49,25 @@ export default function ProjectItem({ gender, genderColor, title, titleColor, de
             >
                 <img className='inset-0 relative w-full z-10 ' src={`${image}`} />
 
-                <motion.div className="absolute bottom-10 left-10 right-10 z-30 pointer-events-none text-white"
+                <motion.div className="absolute bottom-10 left-10 right-10 z-30 pointer-events-none"
                     animate={controls}
                     variants={primaryTextVariants}
                     transition= {{
                         duration:0.6,
                         ease:'easeInOut'
                     }}
-                    >
+                >
                     <h4 className="mb-5 font-light font-serif italic" style={{
                         color:`${genderColor}`
                     }}>
                         {gender}
                     </h4>
-                    <h2 className="mb-2 font-black text-2xl"  style={{
+                    <h2 className="mb-2 font-black text-2xl" style={{
                         color:`${titleColor}`
                     }}> 
                         {title}
                     </h2>
+                    
                     <motion.p className="absolute top-[200%] font-bold text-xl"
                         animate={controls}
                         variants={secondaryTextVariant}

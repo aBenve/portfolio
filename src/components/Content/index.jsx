@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 
 import './styles.css'
 
+
 export default function Content() {
 
     const [scrolled, setScrolled] = useState(false)
@@ -31,12 +32,30 @@ export default function Content() {
         return () => {window.removeEventListener('scroll', handleScroll);}
     },[])  
 
-
-
     const variants = {
-        initial: {width: scrolled ? '50%':'50%', opacity: 1},
-        done: {width: scrolled ? '0%':'50%' , opacity: 1} // TODO: may be changed
+        initial: {width: '50%', opacity: 1},
+        done: {
+            width: scrolled ? '0%':'50%' , 
+            opacity: 1, 
+            transition: {
+                duration: animDuration, 
+                ease:[0.76, 0, 0.64, 1]
+            }
+        }
     }
+    const TextVariants = {
+        initial: {
+            left: '50%',
+        },
+        done: {
+            left: scrolled ? '98%':'50%' , 
+            transition: {
+                duration: animDuration, 
+                ease:[0.80, 0.3, 0.53, 1]
+            }
+        } 
+    }
+    
 
     return <>
             <main className="w-full flex flex-row h-full content p-10" style={
@@ -55,17 +74,21 @@ export default function Content() {
                         about
                     </motion.div>
                 </section>
-                <motion.section className='flex bg-gray-200 relative' 
+                <motion.section className='flex bg-gray-200' 
                     animate='done'
                     initial='initial' 
                     variants={variants}
-                    transition={{duration: animDuration, ease:'easeInOut'}}
+                   
                     >
-                    <div className="welcome">
-                        FRONT DEV
-                    </div>
 
                 </motion.section>
+                <motion.div className="welcome"
+                    animate='done'
+                    initial='initial' 
+                    variants={TextVariants}
+                >
+                    FRONT DEV
+                </motion.div>
             </main>
     </>
 } 

@@ -1,3 +1,4 @@
+import AnimatedWelcomeTransition from './components/AnimatedWelcomeTransition'
 import Content from './components/Content'
 import Frame from './components/Frame'
 import ProjectGrid from './components/ProjectsGrid'
@@ -7,6 +8,7 @@ import ProjectGrid from './components/ProjectsGrid'
 const App = () => {
 	return (
 		<>
+			<AnimatedWelcomeTransition/>
 			<Frame/>
 			<div className='z-0 w-screen h-screen'>
 				<Content/>	

@@ -5,8 +5,7 @@
     background-color: red;
     text-align: center;
     padding: 2em;
-    left: -5em;
-    transform: translate(0,-50%);
+    transform: translate(-50%,-50%);
 }
 
 .about{
