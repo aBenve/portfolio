@@ -49,7 +49,7 @@ export default function ProjectItem({ gender, genderColor, title, titleColor, de
             >
                 <img className='inset-0 relative w-full z-10 ' src={`${image}`} />
 
-                <motion.div className="absolute bottom-10 left-10 right-10 z-30 pointer-events-none"
+                <motion.div className="absolute bottom-10 left-10 right-10 z-30 pointer-events-none font-primary"
                     animate={controls}
                     variants={primaryTextVariants}
                     transition= {{
@@ -57,7 +57,7 @@ export default function ProjectItem({ gender, genderColor, title, titleColor, de
                         ease:'easeInOut'
                     }}
                 >
-                    <h4 className="mb-5 font-light font-serif italic" style={{
+                    <h4 className="mb-2 text-xl font-secondary" style={{
                         color:`${genderColor}`
                     }}>
                         {gender}

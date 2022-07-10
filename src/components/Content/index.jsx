@@ -21,8 +21,8 @@ export default function Content() {
             setScrolled(false)
             setScrollPosition(0)
         }
-        if(window.scrollY > 230){
-            setFixPage(window.scrollY - 230);
+        if(window.scrollY > 500){
+            setFixPage(window.scrollY - 500);
         }
         else 
             setFixPage(0);
@@ -64,17 +64,44 @@ export default function Content() {
                     visibility:`${fixPage >= 910 ? 'hidden' : 'visible'}`
                 }
             }>
-                <section className='w-full flex flex-col bg-red-400 flex-1'>
-                    <motion.div
-                        animate={{opacity:scrolled?1:0}}
-                        initial={{opacity:0}}
-                        transition={{duration: animDuration/2, ease:'easeInOut', delay: scrolled? animDuration:0}}
-                        className="about"
-                    >
-                        about
-                    </motion.div>
+                <section className='w-full flex flex-col bg-principal flex-1 justify-center'>
+                    <div className="relative left-1/6 w-full text-dark">
+                        <motion.div
+                            animate={{
+                                opacity:scrolled?1:0,
+                                x:scrolled?0:-20,
+                            }}
+                            initial={{
+                                opacity:0,
+                                x:-20
+                            }}
+                            transition={{duration: animDuration/3, ease:'easeInOut', delay: scrolled? animDuration:0}}
+                            className="font-secondary xl:text-5xl text-2xl mb-5 "
+                            >
+                                About
+                            </motion.div>
+                            <motion.div
+                                animate={{
+                                    opacity:scrolled?1:0,
+                                    y:scrolled?0:-10,
+                                }}
+                                initial={{
+                                    opacity:0,
+                                    y:-10
+                                }}
+                                transition={{duration: animDuration/3, ease:'easeInOut', delay: scrolled? animDuration:0}}
+                                className="font-primary xl:text-4xl text-2xl font-bold w-1/2"
+                            >
+                                <p>
+                                    Software engineering student at <a href="https://www.itba.edu.ar/">ITBA</a>, 
+                                </p>
+                                <p className="text-light">
+                                    frontend and UX/UI design enthusiast.  
+                                </p>
+                        </motion.div>
+                    </div>
                 </section>
-                <motion.section className='flex bg-gray-200' 
+                <motion.section className='flex bg-gray-bg' 
                     animate='done'
                     initial='initial' 
                     variants={variants}

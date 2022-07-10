@@ -10,10 +10,12 @@
 
 .about{
     position: absolute;
-    top: 50%;
-    transform: translate(25%,-50%);
-    left: 25%;
+    top: 45%;
+    transform: translate(15%,-45%);
+    left: 15%;
+    width: 30em;
 }
+
 
 .content{
     height: 100vh;

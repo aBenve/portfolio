@@ -13,20 +13,6 @@ const blackBox = {
         },
       },
 };
-const text = {
-  initial: {
-    opacity: 0,
-    y: 40,
-  },
-  animate: {
-    opacity: 1,
-    y: 80,
-    transition: {
-      duration: 1.5,
-      ease: [0.87, 0, 0.13, 1],
-    },
-  },
-};
 const textContainer = {
   initial: {
     opacity: 1,
@@ -60,15 +46,14 @@ export default function AnimatedTransition(){
                 height={800}
                 className="text-white"
               >
-                <rect  className="w-full h-full fill-current" />
-                <motion.rect variants={text} className="w-full h-full text-gray-600 fill-current" />
+                <rect className="w-full h-full text-gray-600 fill-current" />
               </pattern>
               <text
                 className="text-4xl font-bold"
-                text-anchor="middle"
                 x="50%"
                 y="50%"
                 style={{ fill: "url(#pattern)" }}
+
               >
                 ab
               </text>

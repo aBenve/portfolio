@@ -12,18 +12,13 @@ body{
     min-width: 100vw;
     min-height: 100vh;
     padding: 0em 2.5em;
-
 }
 
 .photo{
-    margin-top: 80vh;
+    margin-top: 140vh;
+    min-height: 40vh;
+}
 
-    background-color: blue;
-}
-.projects{
-    background-color: red;
-}
 .contact{
-
-    background-color: green;
+    min-height: 50vh;
 }
