@@ -60,7 +60,7 @@ export default function Content() {
     
 
     return <>
-            <main className="w-full flex flex-row h-full content p-10" style={
+            <main className="w-full flex flex-row h-screen fixed top-0 left-0  p-10" style={
                 {
                     transform:`matrix(1,0,0,1,0,${(-fixPage) <= -910 ? 0:(-fixPage)})`, 
                     visibility:`${fixPage >= 910 ? 'hidden' : 'visible'}`

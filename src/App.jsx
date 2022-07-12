@@ -17,10 +17,10 @@ const App = () => {
 				{/* <AnimatedTransition/> */}
 				<Frame/>
 				<Header />
-				<div className='z-0 w-screen h-screen'>
+				<div className='z-0 w-full h-screen overflow-x-clip'>
 					<Content/>	
 					
-					<div className='px-10 photo relative z-30 bg-dark'> 
+					<div className='px-10 photo relative z-30 bg-dark overflow-x-hidden'> 
 						<section className='text-light'>
 							aSDASD
 						</section> 
