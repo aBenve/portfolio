@@ -92,7 +92,6 @@ export default function AnimatedWelcomeTransition(){
           className="absolute bottom-0 z-50 bg-principal h-full w-full text-white flex items-center justify-center overflow-x-hidden "
           animate={bgControl}
           onAnimationStart={() => {
-              console.log('asd')
               //document.body.classList.add("overflow-hidden")
             }
           }
@@ -102,9 +101,9 @@ export default function AnimatedWelcomeTransition(){
             }
           }
       >
-          <motion.svg id="Capa_1" className="absolute z-30" width={250} height={200} data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 454.1517 298.2149"
-            animate={svgControl}
-          >
+        <motion.svg id="Capa_1" className="absolute z-30" width={250} height={200} data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 454.1517 298.2149"
+          animate={svgControl}
+        >
             <motion.path 
               d="M131.1491,188.1671a102.7759,102.7759,0,1,0,0,205.5518H233.9274V290.9407A102.7777,102.7777,0,0,0,131.1491,188.1671ZM188.6,348.3962h-57.451a57.4177,57.4177,0,0,1-57.4509-57.4555,58.24,58.24,0,0,1,.3363-6.2663,57.1366,57.1366,0,0,1,12.3236-29.7092,56.0893,56.0893,0,0,1,4.1669-4.6486A57.451,57.451,0,0,1,188.6,290.9407Z" 
               transform="translate(-27.371 -105.5042)"

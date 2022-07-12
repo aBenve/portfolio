@@ -18,7 +18,7 @@ export default function ProjectGrid(){
     return <>
         <main className="flex flex-col w-full px-10">
 			<section className='w-full py-36 text-center bg-gray-bg '>
-				<p className="font-secondary text-5xl">Projects</p>
+				<p className="font-secondary text-5xl font-normal">Projects</p>
 			</section>
 			<section className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 auto-rows-fr bg-blue-300'>
 				<ProjectItem {...test}/>
