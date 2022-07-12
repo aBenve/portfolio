@@ -1,8 +1,6 @@
 .welcome{
     position: absolute;
     top: 50%;
-    width: 10em;
-    background-color: red;
     text-align: center;
     padding: 2em;
     transform: translate(-50%,-50%);

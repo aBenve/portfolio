@@ -1,14 +1,16 @@
 import { motion } from "framer-motion"
-import { useEffect, useState } from "react"
-
+import { useContext, useEffect, useState } from "react"
+import AnimatedSvgHello from '../AnimatedSvgHello'
 import './styles.css'
 
+import AnimationContext from "../../context/AnimationContext"
 
 export default function Content() {
 
     const [scrolled, setScrolled] = useState(false)
     const [scrollPosition, setScrollPosition] = useState(0)
     const [fixPage, setFixPage] = useState(0)
+    const {transitionAnimFinish} = useContext(AnimationContext)
 
     const animDuration = 1;
 
@@ -64,7 +66,7 @@ export default function Content() {
                     visibility:`${fixPage >= 910 ? 'hidden' : 'visible'}`
                 }
             }>
-                <section className='w-full flex flex-col bg-principal flex-1 justify-center'>
+                <section className='w-full flex flex-col bg-principal flex-1 justify-center pointer-events-none'>
                     <div className="relative left-1/6 w-full text-dark">
                         <motion.div
                             animate={{
@@ -114,7 +116,7 @@ export default function Content() {
                     initial='initial' 
                     variants={TextVariants}
                 >
-                    FRONT DEV
+                    <AnimatedSvgHello width={400} height={390} start={transitionAnimFinish}/>
                 </motion.div>
             </main>
     </>

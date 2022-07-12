@@ -8,17 +8,9 @@ body{
     box-sizing: border-box;
 }
 
-.base{
-    min-width: 100vw;
-    min-height: 100vh;
-    padding: 0em 2.5em;
-}
 
 .photo{
     margin-top: 140vh;
     min-height: 40vh;
 }
 
-.contact{
-    min-height: 50vh;
-}
