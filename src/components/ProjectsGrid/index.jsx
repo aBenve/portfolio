@@ -1,5 +1,7 @@
 import { motion } from "framer-motion"
 import ProjectItem from "../ProjectItem"
+import img from '../../assets/test.jpg'
+
 
 const test = {
 	gender: "Sitio Web",
@@ -9,7 +11,7 @@ const test = {
 	desc: "Super descripcion detalladisima super minimalista.",
 	descColor: "#ffffff",
 	bgColor: "#ff3356",
-	image: "./src/assets/test.jpg"
+	image: img
 }
 
 export default function ProjectGrid(){
