@@ -11,7 +11,7 @@ export default function AnimatedWelcomeTransition(){
     const logoControl = useAnimation();
     const svgControl = useAnimation();
 
-    const {transitionAnimFinish, setTransitionAnimFinish} = useContext(AnimationContext)
+    const {setTransitionAnimFinish} = useContext(AnimationContext)
 
     async function sequence(){
       await bgControl.set({ width: "100%"});
@@ -46,6 +46,7 @@ export default function AnimatedWelcomeTransition(){
       await bgControl.start({ 
         top:'2.5rem',
         height:"calc(100% - 5rem)",
+        width:"calc(100% - 2.5rem)",
         left:'2.5rem',
         transition: {
           ease: "easeInOut",
@@ -81,13 +82,20 @@ export default function AnimatedWelcomeTransition(){
       });
     }
 
-    useEffect(() => {sequence()},[]);
+    useEffect(() => {
+      document.body.classList.add("overflow-hidden")
+      sequence()
+    },[]);
 
     return (
       <motion.div
-          className="absolute bottom-0 z-50 bg-principal h-full w-full text-white flex items-center justify-center"
+          className="absolute bottom-0 z-50 bg-principal h-full w-full text-white flex items-center justify-center overflow-x-hidden "
           animate={bgControl}
-          onAnimationStart={() => document.body.classList.add("overflow-hidden")}
+          onAnimationStart={() => {
+              console.log('asd')
+              //document.body.classList.add("overflow-hidden")
+            }
+          }
           onAnimationComplete={() => {
               document.body.classList.remove("overflow-hidden")
               setTransitionAnimFinish(true)
@@ -103,8 +111,6 @@ export default function AnimatedWelcomeTransition(){
               animate={logoControl}
             />
             <motion.path 
-              //fill='#202020' 
-              //stroke='white' 
               d="M369.7458,188.165h0a102.2987,102.2987,0,0,0-57.4517,17.545V128.1667a22.6624,22.6624,0,0,0-22.6625-22.6625h0a22.6624,22.6624,0,0,0-22.6624,22.6625V393.7191h102.777a102.777,102.777,0,0,0,102.7769-102.777v0A102.7769,102.7769,0,0,0,369.7458,188.165Zm57.4518,102.7771a57.4518,57.4518,0,0,1-57.4518,57.4518h-57.452V290.942A57.4518,57.4518,0,0,1,369.7457,233.49h0a57.4519,57.4519,0,0,1,57.4518,57.4519Z" 
               transform="translate(-27.371 -105.5042)"
               animate={logoControl}

@@ -8,8 +8,17 @@ import { motion } from 'framer-motion'
 import Header from './components/Header'
 
 import {AnimationContextProvider} from './context/AnimationContext'
+import { useEffect } from 'react'
+import ExtraData from './components/ExtraData'
+import Contact from './components/Contact'
+
+
 
 const App = () => {
+	window.onbeforeunload = function () {
+		window.scrollTo(0,0);
+	};
+	
 	return (
 		<>
 			<AnimationContextProvider >
@@ -19,23 +28,9 @@ const App = () => {
 				<Header />
 				<div className='z-0 w-full h-screen overflow-x-clip'>
 					<Content/>	
-					
-					<div className='px-10 photo relative z-30 bg-dark overflow-x-hidden'> 
-						<section className='text-light'>
-							aSDASD
-						</section> 
-					</div>
+					<ExtraData/>
 					<ProjectGrid/>
-					<div className='px-10 pb-10 min-h-min bg-dark'>
-						<div className='flex flex-col items-center' >
-							<p className='text-light font-bold font-secondary text-5xl mt-24'>
-								Contact
-							</p>
-							<div className='bg-second-dark p-5 rounded-lg my-36'>
-								<span className='font-primary text-4xl text-light'>abenvenuto@itba.edu.ar</span>
-							</div>
-						</div>
-					</div>
+					<Contact/>
 				</div>
 			</AnimationContextProvider>
 		</>
