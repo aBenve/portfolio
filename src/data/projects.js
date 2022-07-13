@@ -1,12 +1,17 @@
-export default data = [{
-    title: "proyecto 1.",
-    type: "Sitio web",
-    desc: "Descricion breve pero detallada del projecto.",
-    img: "./src/assets/test.jpg"
-},{
-    title: "proyecto 2.",
-    type: "App",
-    desc: "Descricion breve pero detallada del projecto.",
-    img: "./src/assets/test.jpg"
+import img from '../assets/probablyMockup.png'
 
-}]
+
+const data = [
+    {
+        gender: "Sitio Web",
+        genderColor: "#fafafa",
+        title: "probably",
+        titleColor: "#fafafa",
+        desc: "Probability and statistics web calculator.",
+        descColor: "#202020",
+        bgColor: "#A594FE",
+        image: img
+    }
+]
+
+export default data

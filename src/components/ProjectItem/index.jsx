@@ -43,9 +43,10 @@ export default function ProjectItem({ gender, genderColor, title, titleColor, de
         controls.start("initial");
     }
     return <>
-            <a className='relative overflow-hidden'
+            <a className='relative overflow-hidden '
                 onMouseEnter={handleMouseEnterControls}
                 onMouseLeave={handleMouseLeaveControls}
+                href="https://probab.vercel.app/"
             >
                 <img className='inset-0 relative w-full z-10 ' src={`${image}`} />
 
