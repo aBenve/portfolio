@@ -2,7 +2,7 @@ import { motion } from "framer-motion"
 
 
 
-export default function AnimatedSvgHello({width, height, start}){
+export default function AnimatedSvgHello({width, start}){
     
     const variant = {
         initial: { strokeDashoffset: 100},
@@ -13,7 +13,7 @@ export default function AnimatedSvgHello({width, height, start}){
     }
 
     return(
-        <svg width={width} height={height} viewBox="0 0 42 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg width={width}  viewBox="0 0 42 31" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g id="H">
                 <motion.line id="Line 3" x1="2" y1="8.74228e-08" x2="2" y2="14" stroke="#202020" strokeWidth="4"
                     variants={variant}

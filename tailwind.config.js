@@ -16,8 +16,13 @@ module.exports = {
         'light':'#ffffff',
         'principal': '#7B61FF',
         'gray-bg': '#F8F8F8'
+      },
+      zIndex: {
+        '60': '60'
+      },
+      boxShadow:{
+        'bar': '-10px 0 15px -3px rgb(0 0 0 / 0.1), -4px 0 6px -1px rgb(0 0 0 / 0.1)'
       }
-
     },
   },
   plugins: [],

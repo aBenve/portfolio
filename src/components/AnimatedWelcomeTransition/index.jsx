@@ -43,17 +43,20 @@ export default function AnimatedWelcomeTransition(){
           duration: 0.2,
         }
       })
-      await bgControl.start({ 
-        top:'2.5rem',
-        height:"calc(100% - 5rem)",
-        width:"calc(100% - 2.5rem)",
-        left:'2.5rem',
-        transition: {
-          ease: "easeInOut",
-          duration: 0.2,
-          delay:0.5
-        }
-      });
+      if(window.innerWidth > 768) {
+
+        await bgControl.start({ 
+          top:'2.5rem',
+          height:"calc(100% - 5rem)",
+          width:"calc(100% - 2.5rem)",
+          left:'2.5rem',
+          transition: {
+            ease: "easeInOut",
+            duration: 0.2,
+            delay:0.5
+          }
+        });
+      }
 
       await svgControl.set({
         //transform:'translateX(0px)',
@@ -89,7 +92,7 @@ export default function AnimatedWelcomeTransition(){
 
     return (
       <motion.div
-          className="absolute bottom-0 z-50 bg-principal h-full w-full text-white flex items-center justify-center overflow-x-hidden "
+          className="absolute bottom-0 z-60 bg-principal h-full w-full text-white flex items-center justify-center overflow-x-hidden "
           animate={bgControl}
           onAnimationStart={() => {
               //document.body.classList.add("overflow-hidden")

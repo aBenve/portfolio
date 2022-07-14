@@ -3,11 +3,11 @@ import { motion, useAnimation } from "framer-motion"
 const primaryTextVariants = {
     hover: {
         //transform: 'matrix(1, 0, 0, 1, 0, -90)'
-        transform: 'translateY(-90px)'
+        transform: 'translateY(-5em)'
     },
     initial: {
         //transform: 'matrix(1, 0, 0, 1, 0, 0)'
-        transform: 'translateY(0px)'
+        transform: 'translateY(0em)'
     }
 }
 
@@ -58,7 +58,7 @@ export default function ProjectItem({ gender, genderColor, title, titleColor, de
                         ease:'easeInOut'
                     }}
                 >
-                    <h4 className="mb-2 text-xl font-secondary" style={{
+                    <h4 className="mb-2 text-xl font-secondary font-bold" style={{
                         color:`${genderColor}`
                     }}>
                         {gender}

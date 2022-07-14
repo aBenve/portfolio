@@ -26,7 +26,7 @@ const App = () => {
 				{/* <AnimatedTransition/> */}
 				<Frame/>
 				<Header />
-				<div className='z-0 w-full h-screen overflow-x-clip'>
+				<div className='z-0 w-full h-screen overflow-x-clip '>
 					<Content/>	
 					<ExtraData/>
 					<ProjectGrid/>
