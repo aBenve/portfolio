@@ -18,7 +18,8 @@ module.exports = {
         'gray-bg': '#F8F8F8'
       },
       zIndex: {
-        '60': '60'
+        '60': '60',
+        '70': '70'
       },
       boxShadow:{
         'bar': '-10px 0 15px -3px rgb(0 0 0 / 0.1), -4px 0 6px -1px rgb(0 0 0 / 0.1)'

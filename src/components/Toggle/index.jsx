@@ -16,7 +16,7 @@ export default function Toggle({navOpen, setNavOpen}){
 
 
     return (
-        <a className='md:hidden fixed top-6 right-6 z-50 w-12 h-12 flex justify-center items-center bg-white rounded-full cursor-pointer'
+        <a className='md:hidden fixed top-6 right-6 z-60 w-12 h-12 flex justify-center items-center bg-white rounded-full cursor-pointer'
                 onClick={() => setNavOpen(!navOpen)}
             >
                 <svg className="h-8 w-8 text-dark"  

@@ -2,7 +2,7 @@ import { motion } from "framer-motion"
 
 export default function About({scrolled, animDuration}) {
     return(
-        <div className="relative left-1/6 w-full text-dark">
+        <div id="About" className="relative left-1/6 w-full text-dark">
                         <motion.div
                             animate={{
                                 opacity:scrolled?1:0,
@@ -13,7 +13,7 @@ export default function About({scrolled, animDuration}) {
                                 x:-20
                             }}
                             transition={{duration: animDuration/3, ease:'easeInOut', delay: scrolled? animDuration:0}}
-                            className="font-secondary xl:text-5xl text-2xl mb-5 "
+                            className="font-secondary xl:text-5xl text-3xl font-bold mb-5 "
                             >
                                 About
                             </motion.div>
@@ -27,7 +27,7 @@ export default function About({scrolled, animDuration}) {
                                     y:-10
                                 }}
                                 transition={{duration: animDuration/3, ease:'easeInOut', delay: scrolled? animDuration:0}}
-                                className="font-primary xl:text-4xl text-2xl font-bold w-1/2"
+                                className="font-primary xl:text-4xl md:text-2xl text-xl font-bold w-1/2"
                             >
                                 <p>
                                     Software engineering student at <a href="https://www.itba.edu.ar/">ITBA</a>, 

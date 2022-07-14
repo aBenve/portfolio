@@ -92,7 +92,7 @@ export default function AnimatedWelcomeTransition(){
 
     return (
       <motion.div
-          className="absolute bottom-0 z-60 bg-principal h-full w-full text-white flex items-center justify-center overflow-x-hidden "
+          className="absolute bottom-0 z-70 bg-principal h-full w-full text-white flex items-center justify-center overflow-x-hidden "
           animate={bgControl}
           onAnimationStart={() => {
               //document.body.classList.add("overflow-hidden")
