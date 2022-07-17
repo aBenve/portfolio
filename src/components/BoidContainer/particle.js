@@ -1,4 +1,5 @@
 import * as THREE from 'three'
+import {Clock} from 'three';
 
 
 function getRandomFloat(min, max, decimals) {
@@ -7,7 +8,7 @@ function getRandomFloat(min, max, decimals) {
     return parseFloat(str);
   }
 
-const maxVelocity = 5, maxAcceleration = 5, maxForce = 0.1
+const maxVelocity = 250, maxAcceleration = 250, maxForce = 500
 
 function onWindowResize(current, camera, renderer){
     camera.aspect = current.clientWidth / current.clientHeight;
@@ -78,14 +79,16 @@ export class Space {
                                 i
                                 )
                             })
-
+		this.clock = new Clock();
     }
 
     interact(){
         this.particles.forEach((particle) => particle.interact(this.particles))
     }
     update(){
-        this.particles.forEach((particle) => particle.update(this.width, this.height))
+		let dt = this.clock.getDelta();
+        this.particles.forEach((particle) => particle.update(dt, this.width, this.height))
+		console.log(1/dt);
     }
     addToScene(){
         this.particles.forEach((particle) => particle.addToScene(this.spaceRender.scene))
@@ -95,8 +98,8 @@ export class Space {
     }
     animate(){
         requestAnimationFrame(() => this.animate())
-        this.interact()
-        this.update()
+		this.interact()
+		this.update()
         this.render()
         this.spaceRender.render()
     }
@@ -132,8 +135,8 @@ export class Particle {
 
         // TODO: maybe need to calculate magnitude?
         this.velocity = new THREE.Vector2(
-            THREE.MathUtils.randFloatSpread( 5 ),
-            THREE.MathUtils.randFloatSpread( 5 )
+            THREE.MathUtils.randFloatSpread( 250 ),
+            THREE.MathUtils.randFloatSpread( 250 )
         )
 
         this.velocity.setLength(THREE.MathUtils.randFloat(0, maxVelocity))
@@ -141,8 +144,8 @@ export class Particle {
         this.particle.rotateZ(this.velocity.angle() - Math.PI/2)
         
         this.acceleration = new THREE.Vector2(
-            THREE.MathUtils.randFloatSpread(5),
-            THREE.MathUtils.randFloatSpread(5)
+            THREE.MathUtils.randFloatSpread(250),
+            THREE.MathUtils.randFloatSpread(250)
         )
 
         this.acceleration.setLength(THREE.MathUtils.randFloat(0, maxAcceleration))
@@ -190,8 +193,7 @@ export class Particle {
             vec.normalize()
             vec.multiplyScalar(maxVelocity)
             vec.sub(this.velocity)
-            if(vec.length() > maxForce)
-               vec.setLength(maxForce)
+			vec.clampLength(0, maxForce)
             return vec
         }
         return new THREE.Vector2(0,0)
@@ -202,8 +204,7 @@ export class Particle {
             vec.normalize(count)
             vec.multiplyScalar(maxVelocity)
             vec.sub(this.velocity)
-            if(vec.length() > maxForce)
-               vec.setLength(maxForce)
+			vec.clampLength(0, maxForce)
             return vec
         }
         return new THREE.Vector2(0,0)
@@ -216,8 +217,7 @@ export class Particle {
             vec.normalize()
             vec.multiplyScalar(maxVelocity)
             vec.sub(this.velocity)
-            if(vec.length() > maxForce)
-               vec.setLength(maxForce)
+			vec.clampLength(0, maxForce)
         }
         return vec
     }
@@ -233,17 +233,16 @@ export class Particle {
         this.acceleration = sumAllForces
     }
 
-    update(width, height){
+    update(dt, width, height){
 
         this.checkBorder(width, height)
         
-        this.position.add(this.velocity)
-        this.velocity.add(this.acceleration)
+		this.position.add(this.velocity.clone().multiplyScalar(dt))
+		this.velocity.add(this.acceleration.clone().multiplyScalar(dt))
 
-        if( this.velocity.length() > maxVelocity)
-            this.velocity.setLength(maxVelocity)
+		this.velocity.clampLength(0, maxVelocity)
 
-            this.acceleration.multiply(0)
+            this.acceleration.multiplyScalar(0)
         }
         
     render(){
