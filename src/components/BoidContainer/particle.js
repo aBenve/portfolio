@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import {Clock} from 'three';
+import {Clock, Matrix4} from 'three';
 
 
 function getRandomFloat(min, max, decimals) {
@@ -67,16 +67,32 @@ export class Space {
         this.particlesAmount = particlesAmount
         this.width = spaceRef.current.clientWidth
         this.height = spaceRef.current.clientHeight
+		const size = 1;
+        const particleGeometry = new THREE.ConeBufferGeometry(10 * size, 25 * size, 3)
+        const particleMaterial = new THREE.MeshBasicMaterial({color: color})
+		this.particlesMesh = new THREE.InstancedMesh(
+            particleGeometry,
+            particleMaterial,
+			particlesAmount
+        )
         this.particles = Array(this.particlesAmount)
                             .fill()
                             .map((e,i) => {return new Particle(
                                 alingWeight,
                                 cohesionWeight,
                                 separationWeigth,
-                                color,
                                 this.width, 
                                 this.height, 
-                                i
+                                i,
+								(pos, vel) => {
+								  //console.log(i);
+								  this.particlesMesh.setMatrixAt(i, 
+									new Matrix4().multiply(
+									  new Matrix4().makeTranslation(pos.x, pos.y, 0)
+									)
+									.multiply(new Matrix4().makeRotationZ(vel.angle() - Math.PI/2))
+								  )
+								}
                                 )
                             })
 		this.clock = new Clock();
@@ -91,10 +107,11 @@ export class Space {
 		console.log(1/dt);
     }
     addToScene(){
-        this.particles.forEach((particle) => particle.addToScene(this.spaceRender.scene))
+		this.spaceRender.scene.add(this.particlesMesh)
     }
     render(){
         this.particles.forEach((particle) => particle.render())
+		this.particlesMesh.instanceMatrix.needsUpdate = true;
     }
     animate(){
         requestAnimationFrame(() => this.animate())
@@ -112,26 +129,20 @@ export class Space {
 
 export class Particle {
 
-    constructor(alingWeight, cohesionWeight, separationWeigth, color, spaceWidth, spaceHeight, id) {
+    constructor(alingWeight, cohesionWeight, separationWeigth, spaceWidth, spaceHeight, id, updated) {
 
 
         this.alingWeight = alingWeight
         this.cohesionWeight = cohesionWeight
         this.separationWeigth = separationWeigth
 
-        const particleGeometry = new THREE.ConeBufferGeometry(10, 25, 3)
-        const particleMaterial = new THREE.MeshBasicMaterial({color: color})
-        this.particle = new THREE.Mesh(
-            particleGeometry,
-            particleMaterial
-        )
 
         this.position = new THREE.Vector2(
             THREE.MathUtils.randFloatSpread( spaceWidth ),
             THREE.MathUtils.randFloatSpread( spaceHeight )
         )
 
-        this.particle.position.set(this.position.x, this.position.y,0)
+        //this.particle.position.set(this.position.x, this.position.y,0)
 
         // TODO: maybe need to calculate magnitude?
         this.velocity = new THREE.Vector2(
@@ -141,7 +152,7 @@ export class Particle {
 
         this.velocity.setLength(THREE.MathUtils.randFloat(0, maxVelocity))
 
-        this.particle.rotateZ(this.velocity.angle() - Math.PI/2)
+        //this.particle.rotateZ(this.velocity.angle() - Math.PI/2)
         
         this.acceleration = new THREE.Vector2(
             THREE.MathUtils.randFloatSpread(250),
@@ -151,6 +162,8 @@ export class Particle {
         this.acceleration.setLength(THREE.MathUtils.randFloat(0, maxAcceleration))
 
         this.id = id
+
+		this.updated = updated;
     }
 
     align(otherParticles){
@@ -246,8 +259,7 @@ export class Particle {
         }
         
     render(){
-        this.particle.position.set(this.position.x, this.position.y, 0)
-        this.particle.setRotationFromAxisAngle(new THREE.Vector3(0,0,1),this.velocity.angle() - Math.PI/2)
+		this.updated(this.position, this.velocity);
     }   
 
     checkBorder(width, height){
@@ -259,9 +271,5 @@ export class Particle {
             this.position.x = width/2
         if(this.position.y < -height/2 )
             this.position.y = height/2
-    }
-
-    addToScene(scene){
-        scene.add(this.particle)
     }
 }
