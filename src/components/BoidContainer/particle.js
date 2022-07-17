@@ -65,8 +65,6 @@ export class Space {
         this.spaceRender = new SpaceRender(spaceRef)
 
         this.particlesAmount = particlesAmount
-        this.width = spaceRef.current.clientWidth
-        this.height = spaceRef.current.clientHeight
 		const size = 1;
         const particleGeometry = new THREE.ConeBufferGeometry(10 * size, 25 * size, 3)
         const particleMaterial = new THREE.MeshBasicMaterial({color: color})
@@ -75,14 +73,15 @@ export class Space {
             particleMaterial,
 			particlesAmount
         )
+		let {x: width, y: height} = this.spaceRender.renderer.getSize(new THREE.Vector2())
         this.particles = Array(this.particlesAmount)
                             .fill()
                             .map((e,i) => {return new Particle(
                                 alingWeight,
                                 cohesionWeight,
                                 separationWeigth,
-                                this.width, 
-                                this.height, 
+                                width, 
+                                height, 
                                 i,
 								(pos, vel) => {
 								  //console.log(i);
@@ -103,8 +102,10 @@ export class Space {
     }
     update(){
 		let dt = this.clock.getDelta();
-        this.particles.forEach((particle) => particle.update(dt, this.width, this.height))
-		console.log(1/dt);
+		let size = this.spaceRender.renderer.getSize(new THREE.Vector2());
+        this.particles.forEach((particle) => particle.update(dt, size.x, size.y))
+		//console.log(size);
+		//console.log(1/dt);
     }
     addToScene(){
 		this.spaceRender.scene.add(this.particlesMesh)
