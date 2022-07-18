@@ -11,7 +11,7 @@ export default function ExtraData() {
             spaceRef, // espacio disponible
             100, // cantidad de particulas
             '#404040',
-            1, // alineamiento
+            0.5, // alineamiento
             0.5, // cohesion
             2 // separacion
         )
