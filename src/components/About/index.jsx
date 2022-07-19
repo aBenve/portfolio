@@ -13,7 +13,7 @@ export default function About({scrolled, animDuration}) {
                                 x:-20
                             }}
                             transition={{duration: animDuration/3, ease:'easeInOut', delay: scrolled? animDuration:0}}
-                            className="font-secondary xl:text-5xl text-3xl font-bold mb-5 "
+                            className="font-secondary xl:text-4xl text-3xl italic mb-5 "
                             >
                                 About
                             </motion.div>

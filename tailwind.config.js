@@ -5,7 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         'primary': ['Outfit', 'sans-serif'],
-        'secondary': ['Ephesis', 'cursive']
+        'secondary': ['Bitter']
       },
       spacing: {
         '1/6': '16.67%'

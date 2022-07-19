@@ -1,6 +1,5 @@
 import { motion } from "framer-motion"
-import { useEffect, useRef } from "react"
-import { Space } from "./particle"
+
 
 export default function BoidContainer({scrolled, animDuration}) {
 
@@ -16,28 +15,8 @@ export default function BoidContainer({scrolled, animDuration}) {
         }
     }
 
-    const spaceRef = useRef(null)
-
-    // useEffect(() => {
-    //     let space = new Space(
-    //         spaceRef, // espacio disponible
-    //         100, // cantidad de particulas
-    //         1, // alineamiento
-    //         0.8, // cohesion
-    //         1.2 // separacion
-    //     )
-    //     space.addToScene()
-    //     space.animate()
-    //     return(
-    //         () => {
-    //             space.unMount()
-    //         }
-    //     )
-    // },[])
-
     return(
         <motion.section 
-                ref={spaceRef}
                 className='flex bg-gray-bg ' 
                 animate='done'
                 initial='initial' 

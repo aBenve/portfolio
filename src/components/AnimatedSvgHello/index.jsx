@@ -8,7 +8,7 @@ export default function AnimatedSvgHello({width, start}){
         initial: { strokeDashoffset: 100},
         animate:(custom) => ({ 
             strokeDashoffset: start ? 0 : 100,
-            transition: {duration: 1.5, ease:"easeInOut", delay:0.2 + (custom * 0.2)}
+            transition: {duration: 1.5, ease:"easeInOut", delay:0.6 + (custom * 0.2)}
         })
     }
 

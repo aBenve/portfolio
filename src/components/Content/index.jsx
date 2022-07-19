@@ -5,7 +5,7 @@ import './styles.css'
 import AnimationContext from "../../context/AnimationContext"
 import About from "../About"
 import Welcome from "../Welcome"
-import BoidContainer from "../BoidContainer"
+import FreeArea from "../FreeArea"
 
 export default function Content() {
 
@@ -48,7 +48,7 @@ export default function Content() {
                 <section className='w-full flex flex-col bg-principal flex-1 pb-10 md:pb-0 justify-end md:justify-center pointer-events-none'>
                     <About  scrolled={scrolled} animDuration={animDuration}/>
                 </section>
-                <BoidContainer  scrolled={scrolled} animDuration={animDuration}/>
+                <FreeArea  scrolled={scrolled} animDuration={animDuration}/>
                 <Welcome start={transitionAnimFinish} scrolled={scrolled} animDuration={animDuration}/>
             </main>
     </>
