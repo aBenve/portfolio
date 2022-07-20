@@ -1,8 +1,8 @@
 import * as THREE from 'three'
 import {Clock, Matrix4} from 'three';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
-import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
-
+import {UnrealBloomPass} from 'three/examples/jsm/postprocessing/UnrealBloomPass'
+import {RenderPass} from 'three/examples/jsm/postprocessing/RenderPass'
 
 function getRandomFloat(min, max, decimals) {
     const str = (Math.random() * (max - min) + min).toFixed(decimals);
@@ -50,9 +50,16 @@ export class SpaceRender{
         window.addEventListener( 'resize', onWindowResize(this.current, this.camera, this.renderer), false );
 
         // post processing
-        //this.componser = new EffectComposer(this.renderer)
-        //const glow = new ShaderPass(glowShader)
-        //this.componser.addPass(glow)
+        this.componser = new EffectComposer(this.renderer)
+        this.renderPass = new RenderPass(this.scene, this.camera)
+        const bloomPass = new UnrealBloomPass(
+            new THREE.Vector2(window.innerWidth, window.innerHeight),
+            3.5,
+            0.4,
+            0.85
+          );
+        this.componser.addPass(this.renderPass)
+        //this.componser.addPass(bloomPass)
 
     }
     unMount(){
@@ -60,8 +67,8 @@ export class SpaceRender{
         window.removeEventListener( 'resize', onWindowResize(this.current, this.camera, this.renderer) );
     }
     render(){
-        this.renderer.render(this.scene, this.camera)
-        //this.componser.render()
+        //this.renderer.render(this.scene, this.camera)
+        this.componser.render()
     }
 }
 
@@ -200,7 +207,7 @@ export class Particle {
                 repellentForce.multiplyScalar(maxVelocity)
                 repellentForce.sub(this.velocity)
 
-                this.velocity = (repellentForce)
+                this.velocity.add(repellentForce)
 
             }
         }
@@ -318,30 +325,3 @@ export class Particle {
             this.position.y = height/2
     }
 }
-
-const glowShader = {
-
-	uniforms: {
-
-		'tDiffuse': { value: null },
-		'opacity': { value: 1.0 }
-
-	},
-
-	vertexShader: /* glsl */`
-		varying vec2 vUv;
-		void main() {
-			vUv = uv;
-			gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
-		}`,
-
-	fragmentShader: /* glsl */`
-		uniform float opacity;
-		uniform sampler2D tDiffuse;
-		varying vec2 vUv;
-		void main() {
-			gl_FragColor = texture2D( tDiffuse, vUv );
-			gl_FragColor.a *= opacity;
-		}`
-
-};

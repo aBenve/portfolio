@@ -58,7 +58,7 @@ export default function ProjectItem({ gender, genderColor, title, titleColor, de
                         ease:'easeInOut'
                     }}
                 >
-                    <h4 className="mb-2 text-xl font-secondary font-bold" style={{
+                    <h4 className="mb-2 text-md font-secondary italic" style={{
                         color:`${genderColor}`
                     }}>
                         {gender}

@@ -8,7 +8,8 @@ module.exports = {
         'secondary': ['Bitter']
       },
       spacing: {
-        '1/6': '16.67%'
+        '1/6': '16.67%',
+        '1/7': '14.28%'
       },
       colors: {
         'dark':'#141414',

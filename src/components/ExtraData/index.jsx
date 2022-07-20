@@ -60,12 +60,21 @@ export default function ExtraData() {
 
 
     return(
-        <section 
-            id='Extra' 
-            className="min-h-[40vh] mt-[140vh] mx-0 md:mx-10  relative z-30 bg-dark flex flex-col justify-center items-center"
-            ref={spaceRef}
-        > 
-    
-        </section>
+        <>
+            <section 
+                id='Extra' 
+                className="min-h-[60vh] mt-[140vh] mx-0 md:mx-10 z-30 bg-dark relative"
+            >
+                <div 
+                    className="absolute inset-0"                 
+                    ref={spaceRef}
+                />
+                {/* <div className="absolute inset-0 text-white top-1/2 left-1/2 bg-red-400 w-fit h-fit p-10 ">
+                    hola
+                </div> */}
+
+            </section> 
+            
+        </>
     )
 }
