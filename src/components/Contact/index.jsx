@@ -10,9 +10,9 @@ if (import.meta.env.MODE === "development") {
   emailData.template = import.meta.env.VITE_TEMPLATE;
   emailData.public_key = import.meta.env.VITE_PUBLIC_KEY;
 } else {
-  emailData.host = process.env.SERVICE_ID;
-  emailData.template = process.env.TEMPLATE;
-  emailData.public_key = process.env.PUBLIC_KEY;
+  emailData.host = import.meta.env.SERVICE_ID;
+  emailData.template = import.meta.env.TEMPLATE;
+  emailData.public_key = import.meta.env.PUBLIC_KEY;
 }
 
 function Label({ title, example, type, validation, register, registerName }) {
