@@ -5,15 +5,9 @@ import { useState } from "react";
 
 const emailData = { host: "", template: "", public_key: "" };
 
-if (import.meta.env.MODE === "development") {
-  emailData.host = import.meta.env.VITE_SERVICE_ID;
-  emailData.template = import.meta.env.VITE_TEMPLATE;
-  emailData.public_key = import.meta.env.VITE_PUBLIC_KEY;
-} else {
-  emailData.host = process.env.VITE_SERVICE_ID;
-  emailData.template = process.env.VITE_TEMPLATE;
-  emailData.public_key = process.env.VITE_PUBLIC_KEY;
-}
+emailData.host = import.meta.env.VITE_SERVICE_ID;
+emailData.template = import.meta.env.VITE_TEMPLATE;
+emailData.public_key = import.meta.env.VITE_PUBLIC_KEY;
 
 function Label({ title, example, type, validation, register, registerName }) {
   return (
