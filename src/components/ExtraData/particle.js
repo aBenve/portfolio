@@ -4,18 +4,13 @@ import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer
 import {UnrealBloomPass} from 'three/examples/jsm/postprocessing/UnrealBloomPass'
 import {RenderPass} from 'three/examples/jsm/postprocessing/RenderPass'
 
-function getRandomFloat(min, max, decimals) {
-    const str = (Math.random() * (max - min) + min).toFixed(decimals);
-  
-    return parseFloat(str);
-  }
-
 const maxVelocity = 200, maxAcceleration = 250, maxForce = 200
 
 function onWindowResize(current, camera, renderer){
+    renderer.setSize( current.clientWidth, current.clientHeight );
+    // composer.setSize( current.clientWidth, current.clientHeight );
     camera.aspect = current.clientWidth / current.clientHeight;
     camera.updateProjectionMatrix();
-    renderer.setSize( current.clientWidth, current.clientHeight );
 }
 
 export class SpaceRender{
@@ -39,7 +34,6 @@ export class SpaceRender{
         this.camera.position.z = 100
         this.scene.add( this.camera)
 
-
         //Renderer
         this.renderer = new THREE.WebGLRenderer({antialias: true, alpha:true})
 
@@ -47,28 +41,40 @@ export class SpaceRender{
         this.renderer.setPixelRatio(window.devicePixelRatio)
         this.current.appendChild(this.renderer.domElement)
 
-        window.addEventListener( 'resize', onWindowResize(this.current, this.camera, this.renderer), false );
+        window.addEventListener( 'resize', () => this.onResize(), false );
 
         // post processing
-        this.componser = new EffectComposer(this.renderer)
-        this.renderPass = new RenderPass(this.scene, this.camera)
-        const bloomPass = new UnrealBloomPass(
-            new THREE.Vector2(window.innerWidth, window.innerHeight),
-            3.5,
-            0.4,
-            0.85
-          );
-        this.componser.addPass(this.renderPass)
+        // this.componser = new EffectComposer(this.renderer)
+        // this.renderPass = new RenderPass(this.scene, this.camera)
+        // const bloomPass = new UnrealBloomPass(
+        //     new THREE.Vector2(window.innerWidth, window.innerHeight),
+        //     3.5,
+        //     0.4,
+        //     0.85
+        //     );
+        // this.componser.addPass(this.renderPass)
         //this.componser.addPass(bloomPass)
 
     }
+
+    onResize(){
+        //composer.setSize( current.clientWidth, current.clientHeight );
+        this.camera.left = this.current.clientWidth / -2,
+        this.camera.right = this.current.clientWidth / 2,
+        this.camera.top = this.current.clientHeight / -2,
+        this.camera.bottom = this.current.clientHeight / 2,
+
+        this.camera.updateProjectionMatrix();
+        this.renderer.setSize( this.current.clientWidth, this.current.clientHeight );
+    }
+
     unMount(){
         this.current.removeChild(this.renderer.domElement)
-        window.removeEventListener( 'resize', onWindowResize(this.current, this.camera, this.renderer) );
+        window.removeEventListener( 'resize', () => this.onResize() );
     }
     render(){
-        //this.renderer.render(this.scene, this.camera)
-        this.componser.render()
+        this.renderer.render(this.scene, this.camera)
+        // this.componser.render()
     }
 }
 
