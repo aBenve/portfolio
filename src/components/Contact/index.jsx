@@ -19,7 +19,7 @@ function Label({ title, example, type, validation, register, registerName }) {
         {title}
       </label>
       <input
-        className="shadow bg-second-dark appearance-none border-2 border-dark rounded w-full py-2 px-3 text-light mb-3 leading-tight 
+        className=" bg-second-dark appearance-none border-2 border-second-dark rounded w-full py-2 px-3 text-light mb-3 leading-tight 
                 focus:outline-none focus:border-principal"
         id={title}
         type={type}
@@ -60,7 +60,7 @@ export default function Contact() {
           {/* <span className='font-primary text-xl md:text-4xl text-light'>abenvenuto@itba.edu.ar</span> */}
           <form
             id="contact-form"
-            className="shadow-md font-primary rounded px-8 mb-10 text-lg"
+            className=" font-primary rounded px-8 mb-10 text-lg"
             onSubmit={handleSubmit(Submit)}
           >
             <fieldset form="contact-form" disabled={emailtSent}>
@@ -122,7 +122,7 @@ export default function Contact() {
                 </label>
                 <textarea
                   rows="4"
-                  className="resize-none shadow appearance-none bg-second-dark border-2 border-dark rounded w-full py-2 px-3 text-light mb-3 leading-tight 
+                  className="resize-none appearance-none bg-second-dark border-2 border-dark rounded w-full py-2 px-3 text-light mb-3 leading-tight 
                                     focus:outline-none focus:border-principal"
                   id="message"
                   type="text"
@@ -142,7 +142,7 @@ export default function Contact() {
               </div>
               <div className="flex items-center justify-between">
                 <button
-                  className="bg-principal  border-2 border-principal hover:border-indigo-600 transition duration-75 ease-in-out text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                  className="bg-principal border-2 border-principal hover:border-indigo-600 transition duration-75 ease-in-out text-white font-bold py-2 px-4 rounded focus:outline-none"
                   type="submit"
                 >
                   Send
