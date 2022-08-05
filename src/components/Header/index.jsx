@@ -14,7 +14,7 @@ export default function Header() {
   return (
     <div>
       <div className="md:block ">
-        <a className="fixed z-40 top-0 left-10 h-10 flex justify-center items-center  ">
+        <a className="fixed z-40 top-0 left-10 h-10 flex justify-center items-center cursor-pointer">
           <SvgLogo width={34} heigh={20} fillColor="#141414" />
         </a>
         <div
