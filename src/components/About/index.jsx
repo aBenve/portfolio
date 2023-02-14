@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import AboutBgSvg from "../AboutBgSvg";
+import DocumentSvg from "../DocumentSvg";
+import PortfolioPDF from "../../assets/portfolio.pdf";
 
 export default function About({ scrolled, animDuration }) {
   return (
@@ -75,28 +77,16 @@ export default function About({ scrolled, animDuration }) {
             >
               Contact
             </button>
-            <button className="text-sm p-1 rounded-full bg-transparent border-solid border-2 border-light w-10 h-10 flex items-center justify-center hover:bg-black hover:bg-opacity-25">
-              <svg
-                className="w-4 h-4 md:w-5 md:h-5 "
-                viewBox="0 0 18 22"
-                fill="none"
-              >
-                <path
-                  d="M10 1H3C2.46957 1 1.96086 1.21071 1.58579 1.58579C1.21071 1.96086 1 2.46957 1 3V19C1 19.5304 1.21071 20.0391 1.58579 20.4142C1.96086 20.7893 2.46957 21 3 21H15C15.5304 21 16.0391 20.7893 16.4142 20.4142C16.7893 20.0391 17 19.5304 17 19V8L10 1Z"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M10 1V8H17"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
+            <a
+              className="text-sm p-1 rounded-full bg-transparent border-solid border-2 border-light w-10 h-10 flex items-center justify-center hover:bg-black hover:bg-opacity-25"
+              rel="follow"
+              target="_blank"
+              onClick={() => {
+                window.open(PortfolioPDF);
+              }}
+            >
+              <DocumentSvg />
+            </a>
           </div>
         </motion.div>
       </div>

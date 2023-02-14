@@ -67,7 +67,7 @@ export default function Contact() {
               <div className="mb-4 ">
                 <Label
                   title="Name"
-                  example="Name"
+                  example="Jane"
                   type="text"
                   validation={{ required: true, maxLenght: 30 }}
                   registerName="name"

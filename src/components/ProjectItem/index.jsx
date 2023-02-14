@@ -60,8 +60,10 @@ export default function ProjectItem({
         rel="follow"
         target="_blank"
       >
+        <div className="absolute w-full z-20 h-full bg-black bg-opacity-30" />
         <img
-          className="inset-0 relative w-full z-10 "
+          className="
+             w-full z-10 h-full object-cover "
           src={`${image}`}
           alt="project image"
         />
