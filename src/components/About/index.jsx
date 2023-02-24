@@ -24,9 +24,9 @@ export default function About({ scrolled, animDuration }) {
       </motion.div>
       <div
         id="About"
-        className="relative left-1/6 w-full text-dark mb-32 md:mb-0 "
+        className="relative left-10 md:left-1/6 w-full text-dark mb-20 md:mb-0 "
       >
-        <motion.div
+        <motion.h2
           animate={{
             opacity: scrolled ? 1 : 0,
             x: scrolled ? 0 : -20,
@@ -43,7 +43,7 @@ export default function About({ scrolled, animDuration }) {
           className="font-secondary lg:text-2xl text-lg italic mb-2 "
         >
           About
-        </motion.div>
+        </motion.h2>
         <motion.div
           animate={{
             opacity: scrolled ? 1 : 0,
@@ -61,13 +61,13 @@ export default function About({ scrolled, animDuration }) {
           className="font-primary lg:text-4xl md:text-2xl text-xl font-bold w-1/2"
         >
           <p className="text-dark">
-            Software engineering student at{" "}
+            I'm Agustin Benvenuto a software engineering student at{" "}
             <a href="https://www.itba.edu.ar/">ITBA</a>,
           </p>
           <p className="text-light">frontend and UX/UI design enthusiast.</p>
           <div className="flex mt-5 gap-x-5 ">
             <button
-              className="bg-second-dark  text-sm lg:text-lg px-3 lg:px-4  rounded-lg font-medium text-light font-primary"
+              className="bg-second-dark  text-sm lg:text-lg px-3 lg:px-4  rounded-lg font-medium text-light font-primary hover:bg-opacity-70 transition duration-200 ease-in-out"
               onClick={() => {
                 // scroll to contact
                 document.getElementById("Contact").scrollIntoView({
