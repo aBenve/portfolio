@@ -40,6 +40,7 @@ export default function ProjectItem({
   descColor,
   bgColor,
   image,
+  link
 }) {
   const controls = useAnimation();
 
@@ -56,7 +57,7 @@ export default function ProjectItem({
         className="relative overflow-hidden "
         onMouseEnter={handleMouseEnterControls}
         onMouseLeave={handleMouseLeaveControls}
-        href="https://probab.vercel.app/"
+        href={link}
         rel="follow"
         target="_blank"
       >

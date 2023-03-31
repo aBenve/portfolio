@@ -12,6 +12,7 @@ const data = [
         desc: "Probability and statistics web calculator.",
         descColor: "#202020",
         bgColor: "#A594FE",
+        link: "https://probably-abenve.vercel.app/",
         image: probablyMockup
     },
     {
@@ -22,6 +23,7 @@ const data = [
         desc: "Podcast web application. People can upload, search and listen to podcasts.",
         descColor: "#202020",
         bgColor: "#F2DBA4",
+        link: "http://pawserver.it.itba.edu.ar/paw-2022b-5/",
         image: wavamMockup
     },
     {
@@ -32,6 +34,7 @@ const data = [
         desc: "Website where ITBA students can schedule their term's classes.",
         descColor: "#202020",
         bgColor: "#4F6FE8",
+        link:"https://course-scheduler.vercel.app/",
         image: schedulerMockup
     }
 ]
